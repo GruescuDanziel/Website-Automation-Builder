@@ -1,4 +1,4 @@
-from PageClass import Page
+from PageClass import File
 
 class Folder:
 
@@ -7,7 +7,7 @@ class Folder:
         self.container = []
 
     def createPage(self, pageName, pageType):
-        self.container.append(Page(pageName, pageType))
+        self.container.append(File(pageName, pageType))
 
     def createFolder(self, folderName):
         self.container.append(Folder(folderName))
