@@ -5,4 +5,3 @@ class Code:
         self.code += content
         self.code += endingCode
 
-

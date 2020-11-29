@@ -6,3 +6,5 @@ initialAction = int(input("What do you wish to do: 1. Make a new webSite. 2. Edi
 if initialAction == 1:
     newWebsite = Website()
     newWebsite.create()
+    newWebsite.createFile("homePage")
+    newWebsite.checkCurrentFolder()

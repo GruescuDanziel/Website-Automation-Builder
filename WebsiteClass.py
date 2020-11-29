@@ -17,10 +17,16 @@ class Website:
     def goBackAFolder(self):
         self.currentFolder = self.previousFolder
 
+    def createFile(self,fileName):
+        self.currentFolder.createPage(fileName)
+
     def checkEntireStructure(self):
         for folder in self.mainFolder.container:
             if isinstance(folder, Folder):
                 folder.viewFolders()
+
+    def checkCurrentFolder(self):
+        self.currentFolder.viewFolders()
 
     def changeFolder(self):
         for folder in self.currentFolder.container:
