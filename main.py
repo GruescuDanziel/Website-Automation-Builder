@@ -8,3 +8,4 @@ if initialAction == 1:
     newWebsite.create()
     newWebsite.createFile("homePage")
     newWebsite.checkCurrentFolder()
+    newWebsite.editFile()

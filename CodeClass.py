@@ -1,7 +1,7 @@
 class Code:
 
-    def createCode(self, startingCode, content, endingCode):
-        self.code += startingCode
+    def __init__(self, content,tagStyle,tagType='h1',):
+        self.code = f"<{tagType} class='{tagStyle}'>"
         self.code += content
-        self.code += endingCode
+        self.code += f"</{tagType}>"
 

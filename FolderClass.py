@@ -1,4 +1,4 @@
-from PageClass import File
+from PageClass import Page
 
 class Folder:
 
@@ -7,7 +7,7 @@ class Folder:
         self.container = []
 
     def createPage(self, pageName):
-        self.container.append(File(pageName))
+        self.container.append(Page(pageName))
 
     def createFolder(self, folderName):
         self.container.append(Folder(folderName))
@@ -17,5 +17,5 @@ class Folder:
             if isinstance(folder, Folder):
                 print(f"{folder.folderName} is in {self.folderName}")
 
-            if isinstance(folder, File):
-                print(f"{folder.fileName}.html is a file")
+            if isinstance(folder, Page):
+                print(f"{folder.pageName}.html is a file")

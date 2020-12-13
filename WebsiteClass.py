@@ -1,4 +1,5 @@
 from FolderClass import Folder
+from PageClass import File
 
 class Website:
     
@@ -7,6 +8,7 @@ class Website:
         self.code = ""
         self.mainFolder = Folder(self.name)
         self.currentFolder = self.mainFolder
+        self.style = "Normal Dark"
 
     def getData(self):
         print(self.name)
@@ -28,9 +30,22 @@ class Website:
     def checkCurrentFolder(self):
         self.currentFolder.viewFolders()
 
+    def editFile(self):
+        choices = []
+        for page in self.currentFolder.container:
+            if isinstance(page, File):
+                print(page.fileName)
+                choices.append(page)
+
+
+        pageChoice = int(input("Which page do you want to edit?"))
+        choices[pageChoice].addCode('ads')
+        choices[pageChoice].showCode()
+
     def changeFolder(self):
         for folder in self.currentFolder.container:
-            print(folder.folderName)
+            if isinstance(folder, Folder):
+                print(folder.folderName)
 
         self.previousFolder = self.currentFolder
         self.currentFolder = self.currentFolder.container[int(input("Which Folder: "))]
