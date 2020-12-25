@@ -52,3 +52,10 @@ class Website:
 
         self.previousFolder = self.currentFolder
         self.currentFolder = self.currentFolder.container[int(input("Which Folder: "))]
+
+    def endEditing(self):
+        confirm = str(input("Would you like to end this session?"))
+        if confirm == "yes":
+            self.editing = False
+        else:
+            pass

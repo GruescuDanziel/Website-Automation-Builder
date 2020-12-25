@@ -13,6 +13,7 @@ class Folder:
         self.container.append(Folder(folderName))
 
     def viewFolders(self):
+        print(self.folderName)
         for folder in self.container:
             if isinstance(folder, Folder):
                 print(f"{folder.folderName} is in {self.folderName}")
