@@ -1,5 +1,5 @@
 from FolderClass import Folder
-from PageClass import File
+from PageClass import Page
 
 class Website:
     
@@ -9,17 +9,20 @@ class Website:
         self.mainFolder = Folder(self.name)
         self.currentFolder = self.mainFolder
         self.style = "Normal Dark"
+        self.editing = True
 
     def getData(self):
         print(self.name)
     
-    def createFolder(self, folderName):
+    def createFolder(self):
+        folderName = str(input("What shall the folder be called"))
         self.currentFolder.createFolder(folderName)
 
     def goBackAFolder(self):
         self.currentFolder = self.previousFolder
 
-    def createFile(self,fileName):
+    def createFile(self):
+        fileName = str(input("What shall the file be called"))
         self.currentFolder.createPage(fileName)
 
     def checkEntireStructure(self):
@@ -33,13 +36,13 @@ class Website:
     def editFile(self):
         choices = []
         for page in self.currentFolder.container:
-            if isinstance(page, File):
-                print(page.fileName)
+            if isinstance(page, Page):
+                print(page.pageName)
                 choices.append(page)
 
 
         pageChoice = int(input("Which page do you want to edit?"))
-        choices[pageChoice].addCode('ads')
+        choices[pageChoice].addCode()
         choices[pageChoice].showCode()
 
     def changeFolder(self):

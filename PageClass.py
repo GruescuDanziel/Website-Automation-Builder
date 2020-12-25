@@ -8,8 +8,11 @@ class Page:
         self.startingCode = "<!DOCTYPE html> \n <html> \n <head> \n <body>"
         self.endingCode = "\n </body> \n  </html>"
 
-    def addCode(self, newCode):
-        self.code.append(Code(content=newCode).code)
+    def addCode(self):
+        dataToAdd= str(input("What will you want to add?"))
+        tagType = str(input("What kind of tag?"))
+        tagStyle = str(input("What style will it be?"))
+        self.code.append(Code(dataToAdd, tagStyle, tagType).code)
 
     def showCode(self):
         print(self.startingCode)
