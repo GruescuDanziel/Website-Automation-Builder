@@ -1,5 +1,7 @@
 from FolderClass import Folder
 from PageClass import Page
+from questions import questions
+import PyInquirer as pi
 
 class Website:
     
@@ -15,14 +17,14 @@ class Website:
         print(self.name)
     
     def createFolder(self):
-        folderName = str(input("What shall the folder be called"))
+        folderName = pi.prompt(questions[1])['choice']
         self.currentFolder.createFolder(folderName)
 
     def goBackAFolder(self):
         self.currentFolder = self.previousFolder
 
     def createFile(self):
-        fileName = str(input("What shall the file be called"))
+        fileName = pi.prompt(questions[1])['choice']
         self.currentFolder.createPage(fileName)
 
     def checkEntireStructure(self):
@@ -54,8 +56,8 @@ class Website:
         self.currentFolder = self.currentFolder.container[int(input("Which Folder: "))]
 
     def endEditing(self):
-        confirm = str(input("Would you like to end this session?"))
-        if confirm == "yes":
+        confirm = pi.prompt(questions[2])['confirmation']
+        if confirm:
             self.editing = False
         else:
             pass

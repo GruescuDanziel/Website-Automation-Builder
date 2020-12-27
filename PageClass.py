@@ -1,4 +1,6 @@
 from CodeClass import Code
+import PyInquirer as pi
+from questions import questions
 
 class Page:
     
@@ -9,7 +11,7 @@ class Page:
         self.endingCode = "\n </body> \n  </html>"
 
     def addCode(self):
-        dataToAdd= str(input("What will you want to add?"))
+        dataToAdd= pi.prompt(questions[3])['data']
         tagType = str(input("What kind of tag?"))
         tagStyle = str(input("What style will it be?"))
         self.code.append(Code(dataToAdd, tagStyle, tagType).code)
