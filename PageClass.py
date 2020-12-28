@@ -12,7 +12,7 @@ class Page:
         self.endingCode = "\n </body> \n  </html>"
 
     def addCode(self):
-        dataToAdd = qs.editQuestion() 
+        dataToAdd = qs.editQuestion().rstrip()
         tagType = qs.inputQuestion()
         tagStyle = qs.inputQuestion()
         self.code[f'{dataToAdd[0:10]}...'] = Code(dataToAdd, tagStyle, tagType)
