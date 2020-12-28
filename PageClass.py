@@ -28,3 +28,4 @@ class Page:
     def removeCode(self):
         codeToRemove = qs.listChoice(self.codeList)
         del self.code[codeToRemove]
+        self.codeList.remove(codeToRemove)
