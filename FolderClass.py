@@ -4,19 +4,22 @@ class Folder:
 
     def __init__(self, folderName):
         self.folderName = folderName;
-        self.container = []
+        
+        self.childFolders= {}
+        self.childFoldersNames = []
+
+        self.childFiles = {}
+        self.childFilesNames = []
 
     def createPage(self, pageName):
-        self.container.append(Page(pageName))
+        self.childFiles[pageName] = Page(pageName)
+        self.childFilesNames.append(pageName)
 
     def createFolder(self, folderName):
-        self.container.append(Folder(folderName))
+        self.childFolders[folderName] = Folder(folderName)
+        self.childFoldersNames.append(folderName)
 
     def viewFolders(self):
         print(self.folderName)
-        for folder in self.container:
-            if isinstance(folder, Folder):
-                print(f"{folder.folderName} is in {self.folderName}")
-
-            if isinstance(folder, Page):
-                print(f"{folder.pageName}.html is a file")
+        for folder in self.childFoldersNames:
+            print(f"{folder} is in {self.folderName}")
