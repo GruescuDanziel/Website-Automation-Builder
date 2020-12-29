@@ -7,7 +7,6 @@ class Page:
         self.pageName = pageName
         self.code = {}
         self.codeList = []
-        #f'{dataToAdd[0:10]}...'
         self.startingCode = "<!DOCTYPE html> \n <html> \n <head> \n <body>"
         self.endingCode = "\n </body> \n  </html>"
 

@@ -1,11 +1,5 @@
 import PyInquirer as pi
 
-questions = [
-    
- 
-]
-
-
 def listChoice(listOfOptions):
     question = [{
         'type' : 'list',

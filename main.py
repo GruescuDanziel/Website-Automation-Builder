@@ -3,7 +3,7 @@ import questions as qs
 
 initialChoices = ['New Website', 'Load Website']
 initialAction = qs.listChoice(initialChoices)
-posibleChoices = ['getData', 'createFolder', 'goBackAFolder',
+posibleChoices = ['createFolder', 'goBackAFolder',
         'createFile', 'checkEntireStructure', 'checkCurrentFolder', 
         'editCode','addCode','checkFile', 'removeCode', 'changeFolder', 'endEditing',]
 

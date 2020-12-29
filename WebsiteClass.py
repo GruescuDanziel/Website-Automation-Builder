@@ -12,15 +12,17 @@ class Website:
         self.style = "Normal Dark"
         self.editing = True
 
-    def getData(self):
-        print(self.name)
-    
     def createFolder(self):
-        folderName = qs.inputQuestion()
+        folderName = ""
+        while len(folderName) == 0:
+            folderName = qs.inputQuestion()
         self.currentFolder.createFolder(folderName)
 
     def goBackAFolder(self):
-        self.currentFolder = self.previousFolder
+        if self.currentFolder != self.name:
+            self.currentFolder = self.previousFolder
+        else:
+            print("You are already at the root folder")
 
     def createFile(self):
         fileName = qs.inputQuestion()
@@ -33,31 +35,44 @@ class Website:
         self.currentFolder.viewFolders()
 
     def addCode(self):
-        choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
-        choiceFile = self.currentFolder.childFiles[choiceFileName]
-        choiceFile.addCode()
+        if len(self.currentFolder.childFilesNames) > 0:
+            choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
+            choiceFile = self.currentFolder.childFiles[choiceFileName]
+            choiceFile.addCode()
+        else:
+            print("You have no files")
 
     def checkFile(self):
-        choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
-        choiceFile = self.currentFolder.childFiles[choiceFileName]
-        
-        choiceFile.showCode()
+        if len(self.currentFolder.childFilesNames) > 0:
+            choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
+            choiceFile = self.currentFolder.childFiles[choiceFileName]
+            choiceFile.showCode()
+        else:
+            print("You have no files")
 
     def editCode(self):
-        choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
-        choiceFile = self.currentFolder.childFiles[choiceFileName]
-        choiceFile.editCode()
+        if len(self.currentFolder.childFilesNames) > 0:
+            choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
+            choiceFile = self.currentFolder.childFiles[choiceFileName]
+            choiceFile.editCode()
+        else:
+            print("You have no files")
 
     def removeCode(self):
-        choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
-        choiceFile = self.currentFolder.childFiles[choiceFileName]
-        choiceFile.removeCode()
+        if len(self.currentFolder.childFilesNames) > 0:
+            choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
+            choiceFile = self.currentFolder.childFiles[choiceFileName]
+            choiceFile.removeCode()
+        else:
+            print("You have no files")
 
     def changeFolder(self):
-        changeFolder = qs.listChoice(self.currentFolder.childFoldersNames)
-
-        self.previousFolder = self.currentFolder
-        self.currentFolder = self.currentFolder.childFolders[changeFolder]
+        if len(self.currentFolder.childFilesNames) > 0:
+            changeFolder = qs.listChoice(self.currentFolder.childFoldersNames)
+            self.previousFolder = self.currentFolder
+            self.currentFolder = self.currentFolder.childFolders[changeFolder]
+        else:
+            print("You have no other folders in here")
 
     def endEditing(self):
         confirm = qs.confirmQuestion()
