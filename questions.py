@@ -35,10 +35,11 @@ def confirmQuestion():
     }]
     return pi.prompt(question)['choice']
 
-def editQuestion():
+def editQuestion(default):
     question = [{
         'type': 'editor',
         'name': 'data',
+        'default': default,
         'message': 'What do you wish to input inside your tag',
         'eargs': {
             'editor':'vim'

@@ -5,7 +5,7 @@ import questions as qs
 class Website:
     
     def create(self):
-        self.name = str(input("What will the website be called: "))
+        self.name = qs.inputQuestion()
         self.code = ""
         self.mainFolder = Folder(self.name)
         self.currentFolder = self.mainFolder
@@ -32,7 +32,7 @@ class Website:
     def checkCurrentFolder(self):
         self.currentFolder.viewFolders()
 
-    def editFile(self):
+    def addCode(self):
         choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
         choiceFile = self.currentFolder.childFiles[choiceFileName]
         choiceFile.addCode()
@@ -43,10 +43,14 @@ class Website:
         
         choiceFile.showCode()
 
+    def editCode(self):
+        choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
+        choiceFile = self.currentFolder.childFiles[choiceFileName]
+        choiceFile.editCode()
+
     def removeCode(self):
         choiceFileName = qs.listChoice(self.currentFolder.childFilesNames)
         choiceFile = self.currentFolder.childFiles[choiceFileName]
-        
         choiceFile.removeCode()
 
     def changeFolder(self):
