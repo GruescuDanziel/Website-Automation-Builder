@@ -7,10 +7,19 @@ posibleChoices = ['createFolder', 'goBackAFolder',
         'createFile', 'checkEntireStructure', 'checkCurrentFolder', 
         'editCode','addCode','checkFile', 'removeCode', 'changeFolder', 'endEditing',]
 
+folderRelatedCommands    = ['createFolder', 'goBackAFolder', 'checkCurrentFolder', 'changeFolder']
+fileRelatedCommands      = ['createFile', 'checkFile', 'addCode', 'removeCode', 'editCode']
+otherRelatedCommands     = ['checkEntireStructure', 'endEditing']
+
+dicitionaryOfChoiches = {
+        'folderRelated'    : folderRelatedCommands,
+        'fileRelated'      : fileRelatedCommands,
+        'other'            : otherRelatedCommands
+        }
 
 if initialAction == 'New Website':
     newWebsite = Website()
     newWebsite.create()
     while(newWebsite.editing):
-        userChoice = qs.listChoice(posibleChoices)
+        userChoice = qs.expandMenu(dicitionaryOfChoiches)
         getattr(newWebsite, userChoice)()

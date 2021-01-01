@@ -1,5 +1,6 @@
 import PyInquirer as pi
 
+
 def listChoice(listOfOptions):
     question = [{
         'type' : 'list',
@@ -40,3 +41,8 @@ def editQuestion(default):
         }
     }]
     return pi.prompt(question)['data']
+
+def expandMenu(dictionaryOfCategories):
+    choiceOfCategory = listChoice(dictionaryOfCategories.keys())
+    return listChoice(dictionaryOfCategories[choiceOfCategory])
+

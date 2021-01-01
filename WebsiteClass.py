@@ -16,7 +16,7 @@ class Website:
         folderName = ""
         while len(folderName) == 0:
             folderName = qs.inputQuestion()
-        self.currentFolder.createFolder(folderName)
+        self.currentFolder.createFolder(folderName, self.currentFolder.folderRank)
 
     def goBackAFolder(self):
         if self.currentFolder != self.name:
@@ -67,7 +67,8 @@ class Website:
             print("You have no files")
 
     def changeFolder(self):
-        if len(self.currentFolder.childFilesNames) > 0:
+        print(self.currentFolder.childFoldersNames)
+        if len(self.currentFolder.childFoldersNames) > 0:
             changeFolder = qs.listChoice(self.currentFolder.childFoldersNames)
             self.previousFolder = self.currentFolder
             self.currentFolder = self.currentFolder.childFolders[changeFolder]
